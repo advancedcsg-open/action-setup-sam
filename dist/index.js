@@ -82,9 +82,9 @@ const run = async () => {
       execSync('brew tap aws/tap')
       execSync('brew install aws-sam-cli')
       core.endGroup()
-
-      execSync('sam --version')
     }
+
+    if (core.getInput('telemetry-anabled') === 'no') core.exportVariable('SAM_CLI_TELEMETRY', '0')
   } catch (error) {
     core.setFailed(error.message)
   }

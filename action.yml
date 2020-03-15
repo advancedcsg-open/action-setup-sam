@@ -1,5 +1,10 @@
-name: 'AWS SAM CLI'
+name: 'Setup AWS SAM CLI'
 description: 'Installs AWS SAM CLI to the runner'
+inputs:
+  telemetry-enabled:
+    description: 'Share telemetry with AWS'
+    required: false
+    default: 'yes'
 runs:
   using: 'node12'
   main: 'dist/index.js'
