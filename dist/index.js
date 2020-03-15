@@ -34,7 +34,7 @@ module.exports =
 /******/ 	// the startup function
 /******/ 	function startup() {
 /******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(497);
+/******/ 		return __webpack_require__(127);
 /******/ 	};
 /******/
 /******/ 	// run startup
@@ -47,6 +47,51 @@ module.exports =
 /***/ (function(module) {
 
 module.exports = require("os");
+
+/***/ }),
+
+/***/ 127:
+/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
+
+const core = __webpack_require__(270)
+const os = __webpack_require__(87)
+const { execSync } = __webpack_require__(129)
+
+const run = async () => {
+  try {
+    const platform = os.platform()
+    core.info(`Installation platform is ${platform}`)
+
+    if (platform === 'linux') {
+      // install hombrew
+      core.startGroup('installing linuxbrew...')
+      execSync('sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"')
+
+      // add brew to path
+      core.addPath('/home/linuxbrew/.linuxbrew/sbin')
+      core.addPath('/home/linuxbrew/.linuxbrew/bin')
+
+      // set brew environment variables
+      core.exportVariable('HOMEBREW_PREFIX', '/home/linuxbrew/.linuxbrew')
+      core.exportVariable('HOMEBREW_CELLAR', '/home/linuxbrew/.linuxbrew/Cellar')
+      core.exportVariable('HOMEBREW_REPOSITORY', '/home/linuxbrew/.linuxbrew/Homebrew')
+      core.endGroup()
+
+      // install SAM CLI use brew
+      core.startGroup('installing SAM cli...')
+      execSync('brew tap aws/tap')
+      execSync('brew install aws-sam-cli')
+      core.endGroup()
+
+      execSync('sam --version')
+    }
+  } catch (error) {
+    core.setFailed(error.message)
+  }
+}
+
+run()
+
 
 /***/ }),
 
@@ -270,34 +315,6 @@ function getState(name) {
 }
 exports.getState = getState;
 //# sourceMappingURL=core.js.map
-
-/***/ }),
-
-/***/ 497:
-/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
-
-const core = __webpack_require__(270)
-const os = __webpack_require__(87)
-const { execSync } = __webpack_require__(129)
-
-const run = async () => {
-  try {
-    const platform = os.platform()
-    core.info(`Installation platform is ${platform}`)
-
-    if (platform === 'linux') {
-      execSync('sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"')
-      core.addPath('/home/linuxbrew/.linuxbrew/bin')
-      core.info(execSync('brew shellenv'))
-      core.exportVariable('HOMEBREW_PREFIX', '/home/linuxbrew/.linuxbrew')
-    }
-  } catch (error) {
-    core.setFailed(error.message)
-  }
-}
-
-run()
-
 
 /***/ }),
 
