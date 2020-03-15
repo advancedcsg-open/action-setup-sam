@@ -1,0 +1,11 @@
+---
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: install sam cli
+    steps:
+      - name: setup-sam action
+        id: test1
+        uses: advancedcsg-open/action-setup-sam@master

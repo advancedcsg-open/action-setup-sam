@@ -1,0 +1,5 @@
+name: 'AWS SAM CLI'
+description: 'Installs AWS SAM CLI to the runner'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

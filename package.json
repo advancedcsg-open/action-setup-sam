@@ -1,0 +1,34 @@
+{
+  "name": "action-setup-sam",
+  "version": "0.0.1",
+  "description": "Install AWS SAM CLI for use on Github Actions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.js",
+    "pre-commit": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/advancedcsg-open/action-setup-sam.git"
+  },
+  "keywords": [
+    "actions",
+    "aws",
+    "sam"
+  ],
+  "author": "Martin Reynolds <martin.reynolds@oneadvanced.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/advancedcsg-open/action-setup-sam/issues"
+  },
+  "homepage": "https://github.com/advancedcsg-open/action-setup-sam#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.3"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.21.1",
+    "pnpm": "^4.11.5",
+    "standard": "^14.3.2"
+  }
+}
