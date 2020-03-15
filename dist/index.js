@@ -287,10 +287,10 @@ const run = async () => {
 
     if (platform === 'linux') {
       execSync('sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"')
-      core.info(execSync('test -d ~/.linuxbrew && ~/.linuxbrew/bin/brew shellenv'))
+      core.addPath('/home/linuxbrew/.linuxbrew/bin')
+      core.info(execSync('brew shellenv'))
+      core.exportVariable('HOMEBREW_PREFIX', '/home/linuxbrew/.linuxbrew')
     }
-
-    core.addPath()
   } catch (error) {
     core.setFailed(error.message)
   }

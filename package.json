@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ncc build index.js",
-    "pre-commit": "npm run build"
+    "build": "ncc build index.js"
   },
   "repository": {
     "type": "git",
