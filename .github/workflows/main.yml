@@ -2,8 +2,17 @@
 on: push
 
 jobs:
-  test:
+  test-linux:
     runs-on: ubuntu-latest
+    name: install sam cli
+    steps:
+      - uses: advancedcsg-open/action-setup-sam@master
+        with:
+          telemetry-enabled: 'no'
+      - name: Check SAM version
+        run: sam --version
+  test-macos:
+    runs-on: macos-latest
     name: install sam cli
     steps:
       - uses: advancedcsg-open/action-setup-sam@master

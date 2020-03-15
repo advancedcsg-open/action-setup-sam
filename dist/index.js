@@ -84,6 +84,14 @@ const run = async () => {
       core.endGroup()
     }
 
+    if (platform === 'darwin') {
+      // install SAM CLI use brew
+      core.startGroup('installing SAM cli...')
+      execSync('brew tap aws/tap')
+      execSync('brew install aws-sam-cli')
+      core.endGroup()
+    }
+
     if (core.getInput('telemetry-anabled') === 'no') core.exportVariable('SAM_CLI_TELEMETRY', '0')
   } catch (error) {
     core.setFailed(error.message)
