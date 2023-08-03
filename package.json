@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/advancedcsg-open/action-setup-sam#readme",
   "dependencies": {
-    "@actions/core": "^1.2.3"
+    "@actions/core": "^1.9.1"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.21.1",
